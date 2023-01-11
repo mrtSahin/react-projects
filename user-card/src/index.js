@@ -21,7 +21,7 @@ const maviTik=(
 
 const info=(
   <div className='info-wrapper'>
-    <img src={profil}></img>
+    <img src={profil}/>
     <div className='name-mavitik'>
       <p>Murat Şahin</p>
       {maviTik}
@@ -44,7 +44,7 @@ const skills=(
   </div>
 )
 
-const dateTime=new Date
+const dateTime=new Date()
 console.log(dateTime)
 
 
@@ -65,7 +65,7 @@ const dateElement=(
 	    </svg>
     </div>
     <div className='year-wrapper'>
-      Joined on {month}&nbsp;{day},&nbsp;{year}
+      Joined on {month+' '+ day+', '+ year}
     </div>
     
   </div>
