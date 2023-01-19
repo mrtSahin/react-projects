@@ -1,91 +1,101 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import profil from './images/profil.png'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import profilResim from "./images/profil.png"
+import "./index.css"
+const rootElement= ReactDOM.createRoot(document.getElementById('root'))
 
-
-
-const skillsArray=['HTML','CSS','JS','React','Python','C++','Java','MSSQL','EMU8086','Kotlin','Matlab','OpenCV']
-
-const rootElement=document.getElementById('root')
-
-const maviTik=(
-  <div>
-    <svg className="blue-tick">
-            <path
-                d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.165-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.163.865.248 1.336.248 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.334l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.094-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z">
-            </path>
-    </svg>
-  </div>
-)
-
-const info=(
-  <div className='info-wrapper'>
-    <img src={profil}/>
-    <div className='name-mavitik'>
-      <p>Murat Şahin</p>
-      {maviTik}
-    </div>
-    <p className='senior-p'>Senior Developer, Turkiye</p>
-  </div>
-)
-
-
-
-
-const skill=skillsArray.map((skil)=><il>{skil}</il>)
-
-const skills=(
-  <div className='skills-wrapper'>
-    <p>SKILLS</p>
-    <div className='skills-list-div'>
-        <ul>{skill}</ul>
-    </div>
-  </div>
-)
-
-const dateTime=new Date()
-console.log(dateTime)
-
-
-const month = dateTime.toLocaleString('tr',{month: 'long'});
-const day = dateTime.toLocaleString('tr',{day: '2-digit'});
-const year = dateTime.getFullYear();
-
-
-
-const dateElement=(
+const PersonPlace=({
+  person:{
+    author,
+    img,
+    unvan,
+    country
+  }
+})=>{
   
-  <div className='date-wrapper'>
-    <div className='icon-wrapper'>
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-		    <circle cx="50" cy="50" r="50" fill="#9ca1a8" />
-		    <line x1="50" y1="55" x2="50" y2="10" stroke="white" stroke-width="10" />
-		    <line x1="55" y1="50" x2="80" y2="50" stroke="white" stroke-width="10" />
-	    </svg>
+  return(
+    <div className="person-wrapper">
+      <div className="img-wrapper">
+        <img src={img} alt="murat"/>
+      </div>
+      <h2>{author.firstName+' '+author.lastName}</h2>
+      <p>{unvan+', '+country}</p>
     </div>
-    <div className='year-wrapper'>
-      Joined on {month+' '+ day+', '+ year}
+  )
+}
+
+const SkillsPlace=(props)=>{
+  const skillBox=props.skills.map((skill)=>{return <li key={skill}>{skill}</li>})
+  return(
+    <div>
+      <div className="skill-text">
+        <h1>SKILLS</h1>
+      </div>
+      
+      <div className="skill-wrapper">
+      
+      <ul>
+        {skillBox}
+      </ul>
+    </div>
     </div>
     
-  </div>
-  
-)
+  )
+
+}
+
+const DatePlace=(props)=>{ 
+  const date=props.date
+  return(
+    <div className="date-wrapper">{date}</div>
+  )
+}
+
+
+const App=()=>{
+  const person={
+    author:{
+      firstName:"Murat",
+      lastName:"Şahin"
+    },
+    img:profilResim,
+    unvan:"Senior Developer",
+    country:"Turkiye",
+    skills:["HTML","CSS","JS","REACT","JAVA","C++","PYTHON","SASS","KOTLIN","MSSQL","POSTGRE SQL"]
+  }
+
+  const months=[
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ]
+
+  const dateObject=new Date()
+  const monthNumber=dateObject.getMonth()
+  const dayNumber=dateObject.getDay()
+  const year=dateObject.getFullYear()
+
+  const fullDate=`${months[monthNumber]} ${dayNumber} ${year}`
+
+  return(
+    <div className="app">
+    <PersonPlace person={person}/>
+    <SkillsPlace skills={person.skills}></SkillsPlace>
+    <DatePlace date={fullDate}/>
+    </div>
+    
+  )
+}
 
 
 
-
-
-
-const app =(
-  <div className='app-wrapper'>
-    {info}
-    {skills}
-    {dateElement}
-  </div>
-)
-
-
-ReactDOM.render(app,rootElement)
-
-
+rootElement.render(<App/>)

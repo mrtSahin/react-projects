@@ -2,93 +2,106 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
 
 html{
-  font-family: 'Poppins';
+    padding: 0;
+    margin: 0;
 }
 body{
-  background-color: rgb(240,241,247);
+    background-color: rgb(240,241,247);;
+    font-family: 'Poppins';
 }
-#root{
-  border-radius: 10px;
-  background-color: white;
+.app{
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
 }
-
-.info-wrapper{
-  margin: 20px 0px 0px 20px; 
-  display: inline-block;
-  justify-content: baseline;
-  align-items: center;
-  width: 200px;
+.person-wrapper{
+    margin: 20px;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
 }
-
-.name-mavitik{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-top: 0;
+.person-wrapper h2{
+    margin:10px auto ;
+    text-align: center;
 }
-
-p{
-  font-size: 1.7em;
+.person-wrapper p{
+    text-align: center;
 }
-.senior-p{
-  font-size: 1em;
-  margin-top: 0;
-}
-
-svg{
-  width: 25px;
-  height: 25px;
-}
-
 img{
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
+    width: 230px;
+    border-radius: 50%;
+    margin: 10px;
 }
 
+.skill-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0px;
+}
+.skill-text{
+    margin-left: 40px;
+}
 ul{
-  width: 100%;
-  margin-left: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-}
-il{
-  border-radius: 10px;
-  padding: 6px 8px 6px;
-  background-color: rgb(42,207,207);
-  color: white;
-  margin: 8px 16px 8px 0px;
-  font-size: 1.3em;
-  min-width: 100px;
-  text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
 }
 
-
-.skills-list-div{
-  display: inline-block;
-}
-
-.skills-wrapper{
-  margin-left: 20px;
-}
-
-.skills-wrapper p{
-  font-size: 1.5em;
+li{
+    text-decoration: none;
+    margin: 20px;
+    background-color: rgb(20,210,250);
+    padding: 15px;
+    border-radius: 12px;
+    list-style-type: none;
+    color: white;
+    font-weight: 600;
 }
 
 .date-wrapper{
-  display: flex;
-  justify-content: baseline;
-  align-items: center;
-  margin-left: 20px;
+    position: relative;
+    left: 5px;
+    bottom: 0px;
 }
-.year-wrapper{
-  margin-left: 10px;
-  font-size: 1.2em;
-}
-.icon-wrapper svg{
-  width: 15px;
-  margin-top: 6px;
+
+@media only screen and (max-width:900px){ 
+    
+    .skill-text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px;
+    }
+    .person-wrapper{
+        width: 100%;
+        margin:20px auto;
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+    }
+    .img-wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .app{
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 20px;
+    }
+    .date-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
 }
