@@ -1,0 +1,21 @@
+.Country{
+    width: 100%;
+    margin: 100px auto;
+}
+
+.wrapper{
+    margin: 5px auto;
+    display: grid;
+    grid-template-columns: 3fr 7fr 2fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+}
+.wrapper p:last-child{
+    text-align: right;
+}
+.wrapper p:first-child{
+    text-align: left;
+}
+
