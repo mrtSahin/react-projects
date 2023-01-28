@@ -1,7 +1,7 @@
 import data from './/components/Data'
 import Country from './components/Country'
 import "./App.css"
-
+// yorum satırı
 
 function App(){
   //console.log(data)
