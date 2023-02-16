@@ -1,0 +1,25 @@
+.card-wrapper{
+    border-radius: 10px;
+    background-color: white;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    position: relative;
+}
+p{
+    white-space: pre-line;
+    width: 300px;
+    text-align: left;
+}
+img{
+    border-radius: 10px 10px 0 0;
+}
+h2{
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 130px;
+    color: aliceblue;
+    -webkit-text-stroke: 1px #000;
+}
