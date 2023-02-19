@@ -1,25 +1,56 @@
 .card-wrapper{
     border-radius: 10px;
-    background-color: white;
+    width: 300px;
+    height: fit-content;
     display: inline-block;
     justify-content: center;
     align-items: center;
     margin: 20px;
     position: relative;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
-p{
-    white-space: pre-line;
-    width: 300px;
-    text-align: left;
+
+
+
+.App {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+
+p.baslik{
+    margin: 5px;
+    margin-bottom: 0px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+p.bilgi{
+   
+    margin: 0px auto 10px;
 }
 img{
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px;
+    border: 5px solid #000;
+}
+img:target{
+    border-radius: 30px 30px;
 }
 h2{
     position: absolute;
     right: 0;
     left: 0;
-    bottom: 130px;
+    bottom: 300px;
+    background-color: transparent;
     color: aliceblue;
     -webkit-text-stroke: 1px #000;
+   
+}
+
+.zIndex {
+    position: absolute;
+    z-index: 12;
+    background-color: #fff;
+    width: 300px;
+    border-radius: 0 0 10px 10px;
 }
