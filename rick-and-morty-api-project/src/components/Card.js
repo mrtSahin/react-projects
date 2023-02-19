@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './Card.css'
+import './Card.scss'
 import CardInfo from './CardInfo'
 export default function Card({character}){
     //console.log(character)
@@ -16,7 +16,7 @@ export default function Card({character}){
     return(
         <div className="card-wrapper">
             <img src={character.image} alt ={character.image} onMouseLeave={myLeaveFunction} onMouseEnter={myEnterFunction}/>
-            {goster?<CardInfo character={character}/>:<></>}   
+            {goster&&<CardInfo character={character}/>}   
         </div>
     )
 }
