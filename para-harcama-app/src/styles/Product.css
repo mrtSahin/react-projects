@@ -1,0 +1,52 @@
+.Product{
+    width: 240px;
+    height: 363px;
+    border: 1px solid #c7c7c7;
+    background-color: white;
+    display: block;
+}
+
+img{
+    width: 208px;
+    height: 208px;
+}
+.buttons-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+    border: 1px solid #c7c7c7;
+    border-radius: 4px;
+}
+p{
+    margin:10px;
+    margin-left: 17px;
+    text-align: left;
+}
+button{
+    border: none;
+    height: 40px;
+    width: 78px;
+    cursor: pointer;
+}
+.satButton{
+    background-color: #bdbebe;
+    border-radius: 2px 0 0 2px;
+}
+
+.satButton:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+  }
+.satınAlButton{
+    background-color: rgb(0, 225, 255);
+    border-radius: 0 3px 3px 0;
+}
+button ~ p{
+    margin: auto;
+    width: 50px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+}
