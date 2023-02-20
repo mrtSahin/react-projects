@@ -11,20 +11,27 @@
 }
 .card-wrapper img {
   border-radius: 10px 10px;
+  border: 2px solid black;
 }
 .card-wrapper .cardInfo {
+  margin-top: 8px;
+  visibility: hidden;
+  opacity: 0;
   position: absolute;
+  height: 300px;
   top: 300px;
   z-index: 12;
   background-color: #fff;
   width: 300px;
   border-radius: 0 0 10px 10px;
+  border: 2px solid black;
+  transition: opacity 0.5s ease, visibility 0.5s;
 }
 .card-wrapper .cardInfo h2 {
   position: absolute;
   right: 0;
   left: 0;
-  bottom: 300px;
+  bottom: 310px;
   background-color: transparent;
   color: aliceblue;
   -webkit-text-stroke: 1px #000;
@@ -38,4 +45,13 @@
 }
 .card-wrapper .cardInfo p.bilgi {
   margin: 0px auto 10px;
+}
+
+.card-wrapper:hover .cardInfo {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+.card-wrapper:hover img {
+  border-radius: 10px 10px 0px 0px;
 }/*# sourceMappingURL=Card.css.map */

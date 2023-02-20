@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import Card from './components/Card';
+import Header from './components/Header';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
   return (
 
     <div className="App">
+      <Header/>
       {characters.map(ch => (<Card character={ch} />))}
     </div>
   );
