@@ -36,6 +36,7 @@ button{
 }
 
 .satButton:disabled {
+    background-color: #eaebeb;
     cursor: not-allowed;
     pointer-events: all !important;
   }

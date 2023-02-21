@@ -1,28 +1,35 @@
-import { useState } from "react"
-import '../styles/Product.css'
 
-export default function Product({setpara,product}){
-    const [miktar,setMiktar]=useState(0)
+import '../styles/Product.css'
+import formatMoney from './formatMoney'
+
+export default function Product({settoplamharcama,setpara,product}){
     
+// BİG DECİMAL KULLANILABİLİR Mİ(JAVA DA VARDI JS DE DE VARMIŞ)   https://stackoverflow.com/questions/16742578/bigdecimal-in-javascript
+// ÇOK SAYIDA EKMEK ALIP GERİ SATINCA VİRGÜLDEN SONRAKİ SAYILARDA SIKINTI ÇIKIYOR 
+
+
     const satHandle=()=>{
-        setMiktar(miktar-1)
         setpara(prev=>{return Number(prev)+product.price})
+        product.miktar--
+        settoplamharcama(prev=>(prev=prev-product.price))
     }
 
     const satınAlHandle=()=>{
-        setMiktar(miktar+1)
+        
         setpara(prev=>{return Number(prev)-product.price})
+        product.miktar++
+        settoplamharcama(prev=>(prev=prev+product.price))
     }
     
     return(
         <div key={product.name} className='Product'>
             <img src={product.imgUrl}/>
             <p>{product.name}</p>
-            <p>$ {product.price}</p>
-            {/* <p>{miktar*product.price}</p> */}
+            <p>$ {formatMoney(product.price)}</p>
+            {/* <p>{product.miktar*product.price}</p> */}
             <div className="buttons-wrapper">
-                <button key='sat' className="satButton" disabled={miktar<=0?true:false} onClick={satHandle}>Sat</button>
-                <p>{miktar}</p>
+                <button key='sat' className="satButton" disabled={product.miktar<=0?true:false} onClick={satHandle}>Sat</button>
+                <p>{product.miktar}</p>
                 <button key='satınAl' className="satınAlButton" onClick={satınAlHandle}>Satın Al</button>
             </div>
         </div>
