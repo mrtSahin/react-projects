@@ -1,1 +1,0 @@
-const değer=0
