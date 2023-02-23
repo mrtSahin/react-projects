@@ -76,6 +76,12 @@ const data = [
       imgUrl: 'https://image.api.playstation.com/cdn/UP9000/CUSA03220_00/8AeytKpJOUmN3V3M9iieTobBlG69s5sl.png',
       price: 800000,
       miktar:0
+   },
+   {
+      name: 'Skyline GTR R34',
+      imgUrl: 'https://image.api.playstation.com/cdn/UP9000/CUSA03220_00/8AeytKpJOUmN3V3M9iieTobBlG69s5sl.png',
+      price: 800000,
+      miktar:0
    }
 ]
 
