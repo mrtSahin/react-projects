@@ -9,7 +9,7 @@ function Books() {
 
   useEffect(() => {
     axios("https://anapioficeandfire.com/api/books") // 12 tane kitap var 
-      .then(res => { console.log(res.data) })
+      .then(res => { setBooks(res.data) })
   }, [])
 
   

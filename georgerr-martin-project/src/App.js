@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import './App.css';
+import PrivateRoute from "./components/PrivateRoute";
 import Auth from "./layouts/Auth";
 import Dashboard from "./layouts/Dashboard"
-import Login from "./pages/auth/Login";
-import Register from "./pages/auth/SignIn";
+import Login from "./pages/auth/Login/Login";
+import Register from "./pages/auth/SignIn/SignIn";
 import Books from "./pages/dashboard/books/Books";
 import Characters from "./pages/dashboard/characters/Characters";
 import George from "./pages/dashboard/george/George";
@@ -14,7 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Dashboard />}>
-            <Route index element={<George />} />
+            <Route index element={<PrivateRoute><George /></PrivateRoute> } />
             <Route path="/books" element={<Books />} />
             <Route path="/houses" element={<Houses />} />
             <Route path="/characters" element={<Characters />} />
