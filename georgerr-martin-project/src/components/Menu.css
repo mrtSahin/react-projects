@@ -1,11 +1,23 @@
-
-ul{
+.menu-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    position: relative;
 }
-li{
+
+h2 {
+    position: absolute;
+    left: 20px;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+li {
     cursor: pointer;
     padding: 8px;
     margin: 5px;
@@ -14,7 +26,25 @@ li{
     border-radius: 10px 0 10px 0;
     background-color: white;
 }
-li:hover{
+
+li:hover {
+    color: white;
+    border-color: white;
+    background-color: rgb(250, 89, 25);
+    transition: background-color .3s ease, border-color .3s ease;
+}
+
+.cikisButton {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border: 2px solid rgb(236, 154, 2);
+    border-radius: 0 10px 0 10px;
+    background-color: white;
+}
+
+.cikisButton:hover {
     color: white;
     border-color: white;
     background-color: rgb(250, 89, 25);

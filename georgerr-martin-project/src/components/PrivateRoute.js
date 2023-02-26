@@ -7,7 +7,7 @@ function PrivateRoute({ children }) {
     
         if(!kullanıcı){
             return <Navigate to="/auth/" /> // eğer kullanıcı yoksa login sayfasına yönlendir
-            // useNavigate ile yapmaya çalıştığımda olmadı
+            // useNavigate ile yapmaya çalıştığımda olmadı. useNavigate i component ilk kez render edilirken kullanamazsın dedi
         }
         
     

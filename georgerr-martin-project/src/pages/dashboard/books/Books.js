@@ -8,18 +8,18 @@ function Books() {
 
 
   useEffect(() => {
-    axios("https://anapioficeandfire.com/api/books") // 12 tane kitap var 
+    axios("https://www.anapioficeandfire.com/api/books?page=1&pageSize=12") // page ve pageSize ile kaçıncı sayfa ve sayfa başına kaç veri döneceğini belirttik.
+      // aksi halde default olarak sadece 10 tane veri dönüyor. (isterse binlerce olun)
       .then(res => { setBooks(res.data) })
   }, [])
 
-  
+
 
   return (
     <div>
       Books
-      {books.map(book => 
-      {
-        return <BookDetails key={book.isbn} book={book}/>// 
+      {books.map(book => {
+        return <BookDetails key={book.isbn} book={book} />// 
       }
       )}
 

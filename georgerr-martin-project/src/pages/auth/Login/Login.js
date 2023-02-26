@@ -15,7 +15,7 @@ function Login() {
         if (localStorage.getItem(values.userName) != null) {
             const kayitliKullanici = JSON.parse(localStorage.getItem(values.userName))
             console.log(kayitliKullanici)
-            if (kayitliKullanici[0] != values.password) {
+            if (kayitliKullanici[1] != values.password) {
                 alert("Yanlış Şifre")
             } else {
                 localStorage.user = JSON.parse(localStorage.getItem(values.userName)) // giriş yapan kullanıcıyı bunun üzerinde tutuyoruz

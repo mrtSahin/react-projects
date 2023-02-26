@@ -16,7 +16,7 @@ export default function SingIn() {
       console.log('Kayıtlı kullanıcı. Farklı kullanıcı ismi giriniz')
     } else {
 
-      localStorage.setItem(values.userName, JSON.stringify([values.password, values.passwordValidation, values.name, values.surName]))// local storage da obje olarak tutabilmek için bu işlemi yapmamız gerekli. eğer yapmazsak localestorage da stirng olarak tutulur
+      localStorage.setItem(values.userName, JSON.stringify([values.userName,values.password, values.passwordValidation, values.name, values.surName]))// local storage da obje olarak tutabilmek için bu işlemi yapmamız gerekli. eğer yapmazsak localestorage da stirng olarak tutulur
       localStorage.user = JSON.parse(localStorage.getItem(values.userName)) // giriş yapan kullanıcıyı bunun üzerinde tutuyoruz
       //await new Promise(r => (setTimeout(r, 1000))) // gerçek bir backend sorgusu yapıyormuş gibi 1 saniye gecikme eklendi
       navigate('/')
