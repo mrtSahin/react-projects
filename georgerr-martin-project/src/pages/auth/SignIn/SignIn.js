@@ -2,6 +2,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import validationSchema from './validation'
+import { useEffect } from 'react'
 
 export default function SingIn() {
 
@@ -10,10 +11,11 @@ export default function SingIn() {
   // TÜM İNPUTLARIN GİRİLMİŞ VE PASSWORD DOĞRULAMASININ YAPILDIĞI HALE GETİRİLDİ
   // AYNI ZAMANDA KULLANICI KAYIT OLDUĞUNDA BİLGİLERİ GİRİŞ YAPARKEN DOĞRULAMA YAPABİLMEK İÇİN LOCALSTORAGE A EKLENDİ
 
+  
 
-  const kullaniciSorgulama = () => {
+  const kullaniciSorgulama = (bag) => {
     if (localStorage.getItem(values.userName) != null) {
-      alert('Kayıtlı kullanıcı. Farklı kullanıcı ismi giriniz')
+      bag.setErrors({userName:'Kayıtlı kullanıcı. Farklı kullanıcı ismi giriniz'})
     } else {
 
       localStorage.setItem(values.userName, JSON.stringify([values.userName,values.password, values.passwordValidation, values.name, values.surName]))// local storage da obje olarak tutabilmek için bu işlemi yapmamız gerekli. eğer yapmazsak localestorage da stirng olarak tutulur
@@ -35,10 +37,10 @@ export default function SingIn() {
     onSubmit: (values, bag) => {
       // console.log(values)
       // console.log(bag)
-      if (values.password != values.passwordValidation) { // burda karşılaştırmayı yapabilmek için useFormikten alınan values yerine onSubmit in döndüğü values kullanılmalı
+      if (values.password !== values.passwordValidation) { // burda karşılaştırmayı yapabilmek için useFormikten alınan values yerine onSubmit in döndüğü values kullanılmalı
         return bag.setErrors({ passwordValidation: "Girilen şifre ile aynı değil" })
       } else {
-        kullaniciSorgulama()
+        kullaniciSorgulama(bag)
       }
 
     },

@@ -3,16 +3,16 @@ import { Link, Navigate } from 'react-router-dom'
 
 function BookDetails({ book }) {
   const [isDisable, setDisable] = useState(false)
+  
+  
   const bookClickHandle = () => {
     isDisable ? setDisable(false) : setDisable(true)
     //console.log(isDisable)
   }
 
-
-
   return (
     <div>
-      <li onClick={() => (bookClickHandle())}>{book.name}</li>
+      <li onClick={bookClickHandle}>{book.name}</li> {/** eğer kitap isminin yazıldığı alana basılırsa bookClickHandle metodu ile isDisable true yapılarak kitabın bilgileri görünecektir */}
       {
         isDisable &&
         <div>
