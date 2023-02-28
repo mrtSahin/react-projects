@@ -4,7 +4,11 @@ import "./Menu.css"
 function Menu() {
   const navigate = useNavigate()
   // kullanıcı adını menü de solda göstermke için aldığımız bilgileri split ile parçalarına ayırarak bir dizi haline getiriyoruz ve kullanıcı ismi 0. eleman oluyor.
-  let userName=localStorage.getItem('user').split(',')[0]
+  let userName
+  if(localStorage.getItem('user')){
+    userName=localStorage.getItem('user').split(',')[0]
+  }
+  
   //console.log(user[0])
 
   // Sign in yapılırken kullanıcı localstorage a ekleniyor. Login yapılırken de localstorage dan kontrol edilerek giriliyor ama site ilk açıldığında dashboard da açıldığından bir login işlemi yapılmasa da login yapılmış gibi dashboard ı açıyor.
