@@ -13,7 +13,7 @@ export default function SingIn() {
 
   const kullaniciSorgulama = () => {
     if (localStorage.getItem(values.userName) != null) {
-      console.log('Kayıtlı kullanıcı. Farklı kullanıcı ismi giriniz')
+      alert('Kayıtlı kullanıcı. Farklı kullanıcı ismi giriniz')
     } else {
 
       localStorage.setItem(values.userName, JSON.stringify([values.userName,values.password, values.passwordValidation, values.name, values.surName]))// local storage da obje olarak tutabilmek için bu işlemi yapmamız gerekli. eğer yapmazsak localestorage da stirng olarak tutulur
