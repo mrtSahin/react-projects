@@ -11,7 +11,9 @@ function Books() {
       // aksi halde default olarak sadece 10 tane veri dönüyor. (isterse binlerce olun)
       .then(res => {
         setBooks(res.data)
-        setLoading(false)
+      })
+      .finally(()=>{
+        setLoading(false)  // yüklenmeden önce ekrana bilgileri basmaya çalışınca hata veriyor. o yüzden bunu ekledik eğer loading false ise ekrana basacaktır
       })
   }, [])
 

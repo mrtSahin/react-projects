@@ -9,8 +9,11 @@ function CharacterDetails() {
   const [character, setCharacter] = useState({})
   const [loading, setLoading] = useState(true)
   useEffect(() => {
-    axios(url).then(res => {
+    axios(url)
+    .then(res => {
       setCharacter(res.data)
+    })
+    .finally(()=>{
       setLoading(false)  // yüklenmeden önce ekrana bilgileri basmaya çalışınca hata veriyor. o yüzden bunu ekledik eğer loading false ise ekrana basacaktır
     })
   }, [])
