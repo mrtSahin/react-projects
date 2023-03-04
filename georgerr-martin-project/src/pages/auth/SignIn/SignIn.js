@@ -11,20 +11,16 @@ export default function SingIn() {
   // TÜM İNPUTLARIN GİRİLMİŞ VE PASSWORD DOĞRULAMASININ YAPILDIĞI HALE GETİRİLDİ
   // AYNI ZAMANDA KULLANICI KAYIT OLDUĞUNDA BİLGİLERİ GİRİŞ YAPARKEN DOĞRULAMA YAPABİLMEK İÇİN LOCALSTORAGE A EKLENDİ
 
-  
-
   const kullaniciSorgulama = (bag) => {
     if (localStorage.getItem(values.userName) != null) {
-      bag.setErrors({userName:'Kayıtlı kullanıcı. Farklı kullanıcı ismi giriniz'})
+      bag.setErrors({ userName: 'Kayıtlı kullanıcı. Farklı kullanıcı ismi giriniz' })
     } else {
-
-      localStorage.setItem(values.userName, JSON.stringify([values.userName,values.password, values.passwordValidation, values.name, values.surName]))// local storage da obje olarak tutabilmek için bu işlemi yapmamız gerekli. eğer yapmazsak localestorage da stirng olarak tutulur
+      localStorage.setItem(values.userName, JSON.stringify([values.userName, values.password, values.passwordValidation, values.name, values.surName]))// local storage da obje olarak tutabilmek için bu işlemi yapmamız gerekli. eğer yapmazsak localestorage da stirng olarak tutulur
       localStorage.user = JSON.parse(localStorage.getItem(values.userName)) // giriş yapan kullanıcıyı bunun üzerinde tutuyoruz
       //await new Promise(r => (setTimeout(r, 1000))) // gerçek bir backend sorgusu yapıyormuş gibi 1 saniye gecikme eklendi
       navigate('/')
     }
   }
-
 
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } = useFormik({
     initialValues: {
@@ -42,10 +38,8 @@ export default function SingIn() {
       } else {
         kullaniciSorgulama(bag)
       }
-
     },
     validationSchema
-
   })
 
   return (
@@ -81,10 +75,10 @@ export default function SingIn() {
         <div>
           <button onSubmit={handleSubmit} type='submit' >SignIn</button>
         </div>
-
       </form>
 
       <button onClick={() => { navigate('/auth') }}>LogIn</button>
+
     </div>
   )
 }

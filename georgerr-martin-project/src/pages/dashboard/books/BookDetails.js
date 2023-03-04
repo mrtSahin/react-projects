@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function BookDetails({ book }) {
+
   const [isDisable, setDisable] = useState(false)
-  
-  
+
   const bookClickHandle = () => {
     isDisable ? setDisable(false) : setDisable(true)
     //console.log(isDisable)
@@ -23,10 +23,9 @@ function BookDetails({ book }) {
           <p>country: {book.country}</p>
           <p>mediaType: {book.mediaType}</p>
           <p>released: {book.released}</p>
-          <Link to="/characters" state={book.characters}>Characters</Link>
+          <Link to="/characters" state={{ characters: book.characters, bookName: book.name }}>Characters</Link>
         </div>}
     </div>
-
   )
 }
 

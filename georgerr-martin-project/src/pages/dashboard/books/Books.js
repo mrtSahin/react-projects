@@ -12,33 +12,27 @@ function Books() {
       .then(res => {
         setBooks(res.data)
       })
-      .finally(()=>{
+      .finally(() => {
         setLoading(false)  // yüklenmeden önce ekrana bilgileri basmaya çalışınca hata veriyor. o yüzden bunu ekledik eğer loading false ise ekrana basacaktır
       })
   }, [])
 
   console.log(books)
 
-
   return (
     <div>
       Books
       {
-        loading?
-        <div>Yükleniyor</div>
-        :
-        <div>
-        {books.map(book => {
-          return <BookDetails key={book.isbn} book={book} />// 
-        }
-        )}
-      </div>
+        loading ?
+          <div>Yükleniyor</div>
+          :
+          <div>
+            {books.map(book => {
+              return <BookDetails key={book.isbn} book={book} />// 
+            }
+            )}
+          </div>
       }
-      
-
-
-
-
     </div>
   )
 }

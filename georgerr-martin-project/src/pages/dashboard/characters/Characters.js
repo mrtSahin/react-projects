@@ -5,12 +5,15 @@ import axios from 'axios'
 function Characters() {
 
 
-  const [pageId, setPageId] = useState(1)
+  const [pageId, setPageId] = useState(1) // 2000 den fazla karakter olduğundan dolayı ve apiden 1 sayfadan en fazla 50 veri alınabildiğinden dolayı
+  // bunu sayfalara ayırmalıyız ve sayfa numaralarını pageId de tutuyoruz
 
   // toplam 2138 tane karakter var
-  const [characters, setCharacters] = useState(useLocation().state) //BookDetailsdaki Characters sekmesine yönlendiren Link üzerinde state e eklenen değer.
-  // https://anapioficeandfire.com/api/books  apisi characterlerin sadece apilerini dönüyor.
+  const characters = useLocation().state.characters //BookDetailsdaki Characters sekmesine yönlendiren Link üzerinde state e eklenen değer. https://anapioficeandfire.com/api/books  apisi characterlerin sadece apilerini dönüyor.
+  // Aynı zamanda Menu deki Characters butonundaki navigate ile yolanan null state
   //console.log(characters)
+  //console.log(useLocation())
+  const bookName = useLocation().state.bookName
   const [charactersName, setCharactersName] = useState([])
 
   function getCharactersName() {
@@ -24,56 +27,63 @@ function Characters() {
       });
   }
 
-  // kullanıcılar bookdetails tan gelebilir ya da kullanıcı direkt ,Characters sekmesini açabilir bu durumda halihazırdaki api kullanılır
+  // kullanıcılar bookdetails tan gelebilir ya da kullanıcı direkt, Characters sekmesini açabilir bu durumda halihazırdaki api kullanılır
+  // ya daaa BookDetails dan geldikten sonra Characters butonuna basıp gelebilir.
 
-  async function ilkYukle() {
+  async function ilkYukle() { // kullanıcı direkt menüdeki Characters butonu ile geldiğinde çalışacak fonksiyon
     setCharactersName([])
     const res = await axios(`https://anapioficeandfire.com/api/characters?page=${pageId}&pageSize=50`)
-
     res.data.forEach(characterElement => {
       setCharactersName(prev => [...prev, { url: characterElement.url, name: characterElement.name }])
-
     })
-
     //console.log(res.data[1].name)
   }
 
   useEffect(() => {
     setCharactersName([])
-    if (characters === null) {
-      ilkYukle()
-      console.log("direkt giriş")
-      console.log(charactersName)
-    } else {
+    if (characters !== null) { // eğer BookDetails dan geldiyse characters null olmayacaktır. characters boş değilse içerisindekilerle istek atıyoruz.
       getCharactersName() // isteği sadece mount anında yapıyoruz
     }
-
-
     return () => {
-      setCharactersName([]) // sıkıntı çıkmasına karşın character in içini unmount anında boşaltıyoruz
+      //console.log("unmount")
+      setCharactersName([]) // sıkıntı çıkmasına karşın characterName in içini unmount anında boşaltıyoruz
     }
   }, [])
 
+  useEffect(() => { // kullanıcı hem direkt Characters butonuna bastığında BookDetails dan geldikten sonra menüdeki Characters butonu ile geldiğinde çalışacak fonksiyon. 
+    // Kullanıcı ilk geldiğinde characters de nasıl bir değişiklik oluyor da burası çalışıyor dersen yukarı da tanımlanıp yükleniyor. bu sayede direkt geldiğinde de characters içeriği yüklendiğinden burası çalışabiliyor.
+    // Burada characters i dinliyoruz çünkü BookDetails dan geldiğinde içi dolu bir dizidir. BookDetails dan geldikten sonra Menu deki Characters butonuna basınca da navigate ile null state yollanıyor. böylece characters değiştiğinde bu fonksiyon çalışıyor. 
+    // Eğer şöyle bir düşünce olursa o olmuyor denedim. yukarıdaki unmount a setCharacters(null) eklense burasına gerek kalır mıydı. Kullanıcı BookDetails dan geldiktan sonra Characters butonuna basınca zaten ekranda /characters sekmesi gösterildiği için component hiç unmount olmuyor.
+    setCharactersName([])
+    if (characters === null) {// eğer caracters değeri null döndüyse kulanıcının Menüdeki Characters butonu ile geldiğini anlıyoruz. Çünkü orda state olarak null gönderiyoruz.
+      //console.log(characters) // Menu den null döndüğü için ekrana null basacaktır.
+      ilkYukle()
+    }
+  }, [characters])
 
-  // useEffect(() => {
-  //   ilkYukle()
-  //   console.log(pageId)
-  // }, [pageId])
 
-  console.log(charactersName)
+  useEffect(() => {
+    if (characters === null) {
+      ilkYukle()
+    }
+    console.log(pageId)
+  }, [pageId])
 
+  //console.log(characters)
 
-
-
-// booksdetails dan geldikten sonra characters butonuna basınca içini sıfırlaması lazım
   return (
-    <div>Characters
-      <div>
-        <button onClick={() => { setPageId(prev => prev - 1) }}>Önceki Sayfa</button> 
-        <button onClick={() => { setPageId(prev => prev + 1) }}>Sonraki Sayfa</button>
-      </div>
+    <div>
+      {bookName && <div><p>{`${bookName} characters`}</p></div>}
 
-      {charactersName === null||charactersName.length===0
+      {characters === null
+        &&
+        <div>
+          <button onClick={() => { setPageId(prev => prev > 0 ? prev - 1 : 0) }}>Önceki Sayfa</button>
+          <button onClick={() => { setPageId(prev => prev < 43 ? prev + 1 : 43) }}>Sonraki Sayfa</button>
+        </div>
+      }
+
+      {charactersName.length === 0
         ?
         <div>Karakter bilgisi girilmemiş</div>
         :

@@ -10,27 +10,27 @@ function CharacterDetails() {
   const [loading, setLoading] = useState(true)
   useEffect(() => {
     axios(url)
-    .then(res => {
-      setCharacter(res.data)
-    })
-    .finally(()=>{
-      setLoading(false)  // yüklenmeden önce ekrana bilgileri basmaya çalışınca hata veriyor. o yüzden bunu ekledik eğer loading false ise ekrana basacaktır
-    })
+      .then(res => {
+        setCharacter(res.data)
+      })
+      .finally(() => {
+        setLoading(false)  // yüklenmeden önce ekrana bilgileri basmaya çalışınca hata veriyor. o yüzden bunu ekledik eğer loading false ise ekrana basacaktır
+      })
   }, [])
 
   return (
     <div>CharacterDetails
-      {loading ?
-      
-      <div>Yükleniyor</div>
-      :
-      <div>
-        <p><strong>{character.name}</strong></p>
-        <p>{character.gender}</p>
-        <p>{character.culture}</p>
-        <p>{character.aliases[0] === '' ? 'bilinmiyor' : character.aliases[0]}</p>
-        <p>{character.titles[0] === '' ? 'bilinmiyor' : character.titles[0]}</p>
-      </div>}
+      {loading
+        ?
+        <div>Yükleniyor</div>
+        :
+        <div>
+          <p><strong>{character.name}</strong></p>
+          <p>{character.gender}</p>
+          <p>{character.culture}</p>
+          <p>{character.aliases[0] === '' ? 'bilinmiyor' : character.aliases[0]}</p>
+          <p>{character.titles[0] === '' ? 'bilinmiyor' : character.titles[0]}</p>
+        </div>}
     </div>
   )
 }

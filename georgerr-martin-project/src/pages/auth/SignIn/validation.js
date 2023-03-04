@@ -1,6 +1,6 @@
 import { string, object } from 'yup'
 
-const requiredMessage="Bu alanın doldurulması zorunludur!"
+const requiredMessage = "Bu alanın doldurulması zorunludur!"
 
 const validationShema = object({
     userName: string().required(requiredMessage),
