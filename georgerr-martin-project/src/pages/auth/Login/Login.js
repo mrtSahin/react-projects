@@ -28,7 +28,7 @@ function Login() {
                 navigate('/')
             }
         } else {
-            bag.setErrors({ userName: "Böyle bir kullanıcı yok" })
+            bag.setErrors({ userName: "Geçersiz kullanıcı adı" })
         }
     }
 
@@ -45,20 +45,22 @@ function Login() {
     })
 
     return (
-        <div className='Login'>
-            Login
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <input name='userName' id='userName' placeholder='user-name' type={'username'} onChange={handleChange} onBlur={handleBlur} />
-                    {errors.userName && touched.userName && (<div>{errors.userName}</div>)}
+        <div className='login-and-signin'>
+            <h2>Login</h2>
+            <form className='form-box' onSubmit={handleSubmit}>
+                <div className='inputBox'>
+                    <input name='userName' id='userName' type={'username'} onChange={handleChange} onBlur={handleBlur} autoComplete='off' required spellcheck="false" />
+                    <label htmlFor='userName'>Username</label>
+                    {errors.userName && touched.userName && (<div className='error'>{errors.userName}</div>)}
                 </div>
-                <div>
-                    <input name='password' id='password' placeholder='password' type={'password'} onChange={handleChange} onBlur={handleBlur} autoComplete='on' />
-                    {errors.password && touched.password && (<div>{errors.password}</div>)}
+                <div className='inputBox'>
+                    <input name='password' id='password' type={'password'} onChange={handleChange} onBlur={handleBlur} autoComplete='on' required />
+                    <label htmlFor='userName'>Password</label>
+                    {errors.password && touched.password && (<div className='error'>{errors.password}</div>)}
                 </div>
-                <button type='submit' >LogIn</button>
+                <button type='submit' >Log In</button>
             </form>
-            <button onClick={() => { navigate('/auth/signin') }}>SignIn</button>
+            <button onClick={() => { navigate('/auth/signin') }}>Sign In</button>
         </div>
     )
 }

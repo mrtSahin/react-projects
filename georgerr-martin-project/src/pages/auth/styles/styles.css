@@ -1,34 +1,73 @@
-.Login {
+.login-and-signin {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  position: relative;
+  margin: 0 auto;
+  height: 450px;
+  width: 400px;
   justify-content: center;
   align-items: center;
-  background-color: aqua;
+  background-color: orange;
+  border: 2px solid black;
+  border-radius: 20px;
 }
-
-.SignIn {
-  display: flex;
-  flex-direction: column;
-  height: 500px;
-  justify-content: center;
-  align-items: center;
-  background-color: aqua;
+.login-and-signin h2 {
+  font-size: 2em;
+  color: white;
+  margin: 0 a;
 }
-
-input {
-  border: 1px solid orange;
-  border-radius: 3px;
-  height: 22px;
-  margin: 7.5px;
-  padding: 5px;
-  background-color: rgb(253, 227, 178);
-}
-
-input:focus {
+.login-and-signin button {
+  cursor: pointer;
+  width: 310px;
+  padding: 8px;
+  margin: 5px;
+  border: 2px solid rgb(236, 154, 2);
+  border-radius: 10px 0 10px 0;
   background-color: white;
-  outline: none;
-  transition: background-color 0.2s;
+  font-size: 1em;
+  font-weight: 600;
 }
-
-/*# sourceMappingURL=styles.css.map */
+.login-and-signin button:hover {
+  color: white;
+  border-color: white;
+  background-color: rgb(250, 89, 25);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.login-and-signin .form-box {
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+}
+.login-and-signin .form-box .inputBox {
+  position: relative;
+  margin: 30px 0;
+  width: 310px;
+  border-bottom: 2px solid #fff;
+}
+.login-and-signin .form-box .inputBox label {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  transform: translate(-50%);
+  color: #fff;
+  font-size: 1em;
+  pointer-events: none;
+  transition: 0.3s top ease-out;
+}
+.login-and-signin .form-box .inputBox input {
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  padding: 0px 35px 0 5px;
+  color: #fff;
+  transition: 0.5s;
+}
+.login-and-signin .form-box .inputBox input:focus ~ label,
+.login-and-signin .form-box .inputBox input:valid ~ label {
+  top: -10px;
+}
+.login-and-signin .form-box .inputBox .error {
+  position: absolute;
+}/*# sourceMappingURL=styles.css.map */

@@ -43,41 +43,47 @@ export default function SingIn() {
   })
 
   return (
-    <div className='SignIn'>SingIn
+    <div className='login-and-signin' style={{height:'700px'}}>
+      <h2>SignIn</h2>
 
-      <form className='form-container' onSubmit={handleSubmit}>
+      <form className='form-box' onSubmit={handleSubmit}>
         {/**        <input name='userName' placeholder='user-name' type={'text'} onChange={e => { setNewUserInfo({ ...newUserInfo, ...{ userName: e.target.value } }) }} /> */}
-        <div>
-          <input name='userName' placeholder='user-name' type={'text'} onChange={handleChange('userName')} onBlur={handleBlur} />
-          {errors.userName && touched.userName && <div>{errors.userName}</div>}
+        <div className='inputBox'>
+          <input name='userName' type={'text'} autoComplete='off' onChange={handleChange('userName')} onBlur={handleBlur} required spellcheck="false" />
+          <label htmlFor='userName'>Username</label>
+          {errors.userName && touched.userName && <div className='error'>{errors.userName}</div>}
+        </div>
+
+        <div className='inputBox'>
+          <input name='password' type={'password'} autoComplete="on" onChange={handleChange('password')} onBlur={handleBlur} required />
+          <label htmlFor='password'>Password</label>
+          {errors.password && touched.password && <div className='error'>{errors.password}</div>}
+        </div>
+
+        <div className='inputBox'>
+          <input name='passwordValidation' type={'password'} autoComplete="on" onChange={handleChange('passwordValidation')} onBlur={handleBlur} required />
+          <label htmlFor='passwordValidation'>Validation</label>
+          {errors.passwordValidation && touched.passwordValidation && <div className='error'>{errors.passwordValidation}</div>}
+        </div>
+
+        <div className='inputBox'>
+          <input name='name' type={'text'} autoComplete='off' onChange={handleChange('name')} onBlur={handleBlur} required spellcheck="false" />
+          <label htmlFor='name'>Name</label>
+          {errors.name && touched.name && <div className='error'>{errors.name}</div>}
+        </div>
+
+        <div className='inputBox'>
+          <input name='surName' type={'text'} autoComplete='off' onChange={handleChange('surName')} onBlur={handleBlur} required spellcheck="false" />
+          <label htmlFor='surName'>Surname</label>
+          {errors.surName && touched.surName && <div className='error'>{errors.surName}</div>}
         </div>
 
         <div>
-          <input name='password' placeholder='password' type={'password'} autoComplete="on" onChange={handleChange('password')} onBlur={handleBlur} />
-          {errors.password && touched.password && <div>{errors.password}</div>}
-        </div>
-
-        <div>
-          <input name='passwordValidation' placeholder='passwordValidation' type={'password'} autoComplete="on" onChange={handleChange('passwordValidation')} onBlur={handleBlur} />
-          {errors.passwordValidation && touched.passwordValidation && <div>{errors.passwordValidation}</div>}
-        </div>
-
-        <div>
-          <input name='name' placeholder='name' type={'text'} onChange={handleChange('name')} onBlur={handleBlur} />
-          {errors.name && touched.name && <div>{errors.name}</div>}
-        </div>
-
-        <div>
-          <input name='surName' placeholder='surname' type={'text'} onChange={handleChange('surName')} onBlur={handleBlur} />
-          {errors.surName && touched.surName && <div>{errors.surName}</div>}
-        </div>
-
-        <div>
-          <button onSubmit={handleSubmit} type='submit' >SignIn</button>
+          <button onSubmit={handleSubmit} type='submit' >Sign In</button>
         </div>
       </form>
 
-      <button onClick={() => { navigate('/auth') }}>LogIn</button>
+      <button onClick={() => { navigate('/auth') }}>Log In</button>
 
     </div>
   )
