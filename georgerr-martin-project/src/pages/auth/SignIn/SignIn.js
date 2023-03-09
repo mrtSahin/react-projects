@@ -2,7 +2,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik'
 import validationSchema from './validation'
-import { useEffect } from 'react'
 
 export default function SingIn() {
 

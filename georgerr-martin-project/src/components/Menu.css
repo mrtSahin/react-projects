@@ -17,7 +17,7 @@
     padding: 0;
 }
 
-li {
+.button {
     cursor: pointer;
     padding: 8px;
     margin: 5px;
@@ -27,7 +27,7 @@ li {
     background-color: white;
 }
 
-li:hover {
+.button:hover {
     color: white;
     border-color: white;
     background-color: rgb(250, 89, 25);
@@ -50,3 +50,4 @@ li:hover {
     background-color: rgb(250, 89, 25);
     transition: background-color .3s ease, border-color .3s ease;
 }
+

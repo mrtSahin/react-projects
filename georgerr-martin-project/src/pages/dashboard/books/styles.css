@@ -1,0 +1,48 @@
+p {
+    text-transform: capitalize;
+    text-align: left;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.link {
+    text-transform: capitalize;
+    text-align: left;
+    color: black;
+}
+
+.detailsWrapperOn {
+    border: 2px solid aqua;
+    padding: 0 50px 0 50px;
+    visibility: visible;
+    height: fit-content;
+    transition: height .3 ease;
+}
+.detailsWrapperOff {
+    visibility: hidden;
+    height: 0px;
+}
+.bookDetailsWrapper {
+    width: 70%;
+    margin: 10px auto;
+    cursor: pointer;
+    list-style-type: none;
+    border: 2px solid rgb(236, 154, 2);
+    border-radius: 10px 0 10px 0;
+    background-color: white;
+    transition: width .3 ease;
+}
+
+.detailsLi {
+    padding: 8px;
+    margin: 0 auto;
+    border-radius: 8px 0 8px 0;
+}
+
+.detailsLi:hover {
+    color: white;
+    border-color: white;
+    background-color: rgb(250, 89, 25);
+    transition: background-color .3s ease, border-color .3s ease;
+}

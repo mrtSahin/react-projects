@@ -1,30 +1,31 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import './styles.css'
 
 function BookDetails({ book }) {
 
-  const [isDisable, setDisable] = useState(false)
+  const [ClassName, setClassName] = useState('detailsWrapperOff')
 
   const bookClickHandle = () => {
-    isDisable ? setDisable(false) : setDisable(true)
-    //console.log(isDisable)
+    ClassName == 'detailsWrapperOn' ? setClassName('detailsWrapperOff') : setClassName('detailsWrapperOn')
+    //console.log(isClassName)
   }
 
   return (
-    <div>
-      <li onClick={bookClickHandle}>{book.name}</li> {/** eğer kitap isminin yazıldığı alana basılırsa bookClickHandle metodu ile isDisable true yapılarak kitabın bilgileri görünecektir */}
-      {
-        isDisable &&
-        <div>
-          <p>name: {book.isbn}</p>
-          <p>authors: {book.authors[0]}</p>
-          <p>numberOfPages: {book.numberOfPages}</p>
-          <p>publisher: {book.publisher}</p>
-          <p>country: {book.country}</p>
-          <p>mediaType: {book.mediaType}</p>
-          <p>released: {book.released}</p>
-          <Link to="/characters" state={{ characters: book.characters, bookName: book.name }}>Characters</Link>
-        </div>}
+    <div className='bookDetailsWrapper'>
+      <li className='detailsLi' onClick={bookClickHandle}>{book.name}</li> {/** eğer kitap isminin yazıldığı alana basılırsa bookClickHandle metodu ile isClassName detailsWrapperOn yapılarak kitabın bilgileri görünecektir */}
+
+      <div className={ClassName}>
+        <p>name: <span>{book.isbn}</span></p>
+        <p>authors: <span>{book.authors[0]}</span></p>
+        <p>number Of Pages: <span>{book.numberOfPages}</span></p>
+        <p>publisher: <span>{book.publisher}</span></p>
+        <p>country:<span>{book.country}</span></p>
+        <p>media Type: <span>{book.mediaType}</span></p>
+        <p>released: <span>{book.released}</span></p>
+        <Link to="/characters" className='link' state={{ characters: book.characters, bookName: book.name }}><p>Characters</p></Link>
+      </div>
+
     </div>
   )
 }

@@ -26,8 +26,8 @@ function Menu() {
     <div className='menu-container'>
       <h2 className='menuUserName'>{userName}</h2>
       <ul className='menuUl'>
-        <li onClick={() => { navigate('/books') }}>Books</li>
-        <li onClick={() => { navigate('/characters', { state: { characters: null, bookName: "All" } }) }}>Characters</li> {/** eğer kullanıcı BookDetails dan gelidkten sonra Characters butonuna bastıysa characters in içini boşaltmak için burdan null gönderiyoruz. */}
+        <li className='button' onClick={() => { navigate('/books') }}>Books</li>
+        <li className='button' onClick={() => { navigate('/characters', { state: { characters: null, bookName: "All" } }) }}>Characters</li> {/** eğer kullanıcı BookDetails dan gelidkten sonra Characters butonuna bastıysa characters in içini boşaltmak için burdan null gönderiyoruz. */}
       </ul>
       <button className='cikisButton' onClick={cikisButtonHandle}>Çıkış Yap</button>
     </div>
