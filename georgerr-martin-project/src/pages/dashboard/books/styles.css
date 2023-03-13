@@ -4,6 +4,8 @@ p {
     text-decoration: none;
     display: flex;
     justify-content: space-between;
+    margin: 0;
+    padding: 10px 0;
 }
 
 .link {
@@ -13,11 +15,14 @@ p {
 }
 
 .detailsWrapperOn {
-    border: 2px solid aqua;
     padding: 0 50px 0 50px;
     visibility: visible;
     height: fit-content;
     transition: height .3 ease;
+    background-color: rgb(250, 89, 25);
+    color: white;
+    border-radius: 0 0 8px 0;
+
 }
 .detailsWrapperOff {
     visibility: hidden;
@@ -37,7 +42,9 @@ p {
 .detailsLi {
     padding: 8px;
     margin: 0 auto;
+    height: fit-content;
     border-radius: 8px 0 8px 0;
+    transition: background-color .3s ease, border-color .3s ease;
 }
 
 .detailsLi:hover {

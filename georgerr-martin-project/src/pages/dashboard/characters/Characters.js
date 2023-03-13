@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
+import './style.css'
 
 function Characters() {
 
 
-  const [pageId, setPageId] = useState(1) // 2000 den fazla karakter olduğundan dolayı ve apiden 1 sayfadan en fazla 50 veri alınabildiğinden dolayı
+  const [pageId, setPageId] = useState(0) // 2000 den fazla karakter olduğundan dolayı ve apiden 1 sayfadan en fazla 50 veri alınabildiğinden dolayı
   // bunu sayfalara ayırmalıyız ve sayfa numaralarını pageId de tutuyoruz
 
   // toplam 2138 tane karakter var
@@ -31,7 +32,7 @@ function Characters() {
   // ya daaa BookDetails dan geldikten sonra Characters butonuna basıp gelebilir.
 
   async function ilkYukle() { // kullanıcı direkt menüdeki Characters butonu ile geldiğinde çalışacak fonksiyon
-    setCharactersName([])
+    setCharactersName([]) // kullanıcı BookDetails dan geldikten sonra Characters tuşuna basınca önce characters in içini boşaltmamız gerekiyor.
     const res = await axios(`https://anapioficeandfire.com/api/characters?page=${pageId}&pageSize=50`)
     res.data.forEach(characterElement => {
       setCharactersName(prev => [...prev, { url: characterElement.url, name: characterElement.name }])
@@ -73,25 +74,30 @@ function Characters() {
 
   return (
     <div>
-      {bookName && <div><p>{`${bookName} characters`}</p></div>}
+      <div className='charactersHeader'>
+        {bookName && <div><h1 className='bookName'>{`${bookName} characters`}</h1></div>}
 
-      {characters === null
-        &&
-        <div>
-          <button onClick={() => { setPageId(prev => prev > 0 ? prev - 1 : 0) }}>Önceki Sayfa</button>
-          <button onClick={() => { setPageId(prev => prev < 43 ? prev + 1 : 43) }}>Sonraki Sayfa</button>
-        </div>
-      }
+        {characters === null
+          &&
+          <div className='buttonsWrapper'>
+            <button onClick={() => { setPageId(prev => prev > 0 ? prev - 1 : 0) }}>Önceki Sayfa</button>
+            <button onClick={() => { setPageId(prev => prev < 43 ? prev + 1 : 43) }}>Sonraki Sayfa</button>
+          </div>
+        }
+      </div>
 
-      {charactersName.length === 0
-        ?
-        <div>Karakter bilgisi girilmemiş</div>
-        :
-        charactersName.map((character) => {
-          //console.log(character.url)
-          return <div key={character.url}><Link to='/characterDetails' state={character.url}>{character.name ? character.name : 'bilinmiyor'}</Link></div>
-        })}
+      <div className='charactersWrapper'>
+        {charactersName.length === 0
+          ?
+          <div>Karakter bilgisi girilmemiş</div>
+          :
+          charactersName.map((character) => {
+            //console.log(character.url)
+            return <div className='character' key={character.url}><Link style={{textDecoration:'none'}} to='/characterDetails' state={character.url}><p className='characterName'>{character.name ? character.name : 'bilinmiyor'}</p></Link></div>
+          })}
+      </div>
     </div>
+
   )
 }
 

@@ -22,9 +22,13 @@ function Menu() {
     //localStorage.removeItem('user')   //çıkış tuşuna basınca hem Menu cpmponentindeki cikisButtonHandle medodunda hem de Login ekranı ilk kez render edildiğinde bir silme işlemi gerçekleşmiş oluyor bunun için de Menu componentinde bu işlemi yapmıyoruz.
     navigate('/auth')
   }
+
+
   return (
     <div className='menu-container'>
-      <h2 className='menuUserName'>{userName}</h2>
+      <div className='menuUserName' ><h2>{userName}</h2></div>
+      <div className='menuUserNameFirstLetter'><h2>{userName[0]}</h2></div>
+      
       <ul className='menuUl'>
         <li className='button' onClick={() => { navigate('/books') }}>Books</li>
         <li className='button' onClick={() => { navigate('/characters', { state: { characters: null, bookName: "All" } }) }}>Characters</li> {/** eğer kullanıcı BookDetails dan gelidkten sonra Characters butonuna bastıysa characters in içini boşaltmak için burdan null gönderiyoruz. */}

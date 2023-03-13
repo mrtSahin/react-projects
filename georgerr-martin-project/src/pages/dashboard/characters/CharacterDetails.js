@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import axios from 'axios'
+import './style.css'
 
 function CharacterDetails() {
 
@@ -18,18 +19,22 @@ function CharacterDetails() {
       })
   }, [])
 
+  const isThere = (value) => {
+    return value ? value : 'BİLİNMİYOR'
+  }
+
   return (
-    <div>CharacterDetails
+    <div>{/**CharacterDetails */}
       {loading
         ?
         <div>Yükleniyor</div>
         :
-        <div>
-          <p><strong>{character.name}</strong></p>
-          <p>{character.gender}</p>
-          <p>{character.culture}</p>
-          <p>{character.aliases[0] === '' ? 'bilinmiyor' : character.aliases[0]}</p>
-          <p>{character.titles[0] === '' ? 'bilinmiyor' : character.titles[0]}</p>
+        <div className='characterDetailsWrapper'>
+          <h2><strong>{isThere(character.name)}</strong></h2>
+          <p>Gender: <span>{isThere(character.gender)}</span> </p>
+          <p>Culture: <span>{isThere(character.culture)}</span> </p>
+          <p>Aliase: <span>{character.aliases[0] === '' ? 'BİLİNMİYOR' : character.aliases[0]}</span> </p>
+          <p>Tilte: <span>{character.titles[0] === '' ? 'BİLİNMİYOR' : character.titles[0]}</span> </p>
         </div>}
     </div>
   )

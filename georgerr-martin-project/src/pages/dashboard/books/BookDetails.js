@@ -23,7 +23,7 @@ function BookDetails({ book }) {
         <p>country:<span>{book.country}</span></p>
         <p>media Type: <span>{book.mediaType}</span></p>
         <p>released: <span>{book.released}</span></p>
-        <Link to="/characters" className='link' state={{ characters: book.characters, bookName: book.name }}><p>Characters</p></Link>
+        <Link style={{textDecoration:'none'}} to="/characters" className='link' state={{ characters: book.characters, bookName: book.name }}><p style={{color:'white',textDecoration:'underline', display:'inline-block'}}>CHARACTERS</p></Link>
       </div>
 
     </div>

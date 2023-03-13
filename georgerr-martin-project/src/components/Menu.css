@@ -8,8 +8,15 @@
 .menuUserName {
     position: absolute;
     left: 20px;
+    
 }
 
+.menuUserNameFirstLetter
+{
+    position: absolute;
+    left: 20px;
+    display: none;
+}
 .menuUl {
     display: flex;
     justify-content: center;
@@ -51,3 +58,11 @@
     transition: background-color .3s ease, border-color .3s ease;
 }
 
+@media screen and (max-width: 600px) {
+    .menuUserName {
+        display: none; /* kullanıcı ismi ekran küçüldüğünde sığmadığından dolayı artık ekrana kullanıcı ismninin sadece ilk harfini basıyoruz*/
+    }
+    .menuUserNameFirstLetter{
+        display: flex;
+    }
+}

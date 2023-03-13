@@ -1,0 +1,73 @@
+.charactersWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.bookName {
+    display: inline-block;
+    margin: 0 auto;
+    color: rgb(250, 89, 25);
+    padding: 8px;
+    border-radius: 8px;
+    margin: 15px;
+}
+.buttonsWrapper>button{
+    font-size: 1em;
+    font-weight: 600;
+    padding: 10px;
+    margin: 10px;
+    margin-top: 0px;
+    background-color: white;
+    border: 2px solid rgb(236, 154, 2);
+    transition: background-color .3s ease, border-color .3s ease;
+
+}
+
+.buttonsWrapper>button:first-child{
+    border-radius: 10px 0 0 0;
+}
+.buttonsWrapper>button:last-child{
+    border-radius: 0 10px 0 0;
+}
+
+.buttonsWrapper>button:hover{
+    color: white;
+    border-color: white;
+    background-color: rgb(250, 89, 25);
+    transition: background-color .3s ease, border-color .3s ease;
+}
+
+.characterName{
+    color: #EC0202;
+    list-style-type:none ;
+    text-decoration: none;
+    padding: 10px;
+}
+.character{
+    font-size: 1.3em;
+    list-style-type:none ;
+    text-decoration: double;
+    margin: 0 10px;
+    transition: background-color 2.5s ease
+}
+.character:hover{
+    background-color: rgb(197, 195, 195);;
+    transition: background-color .1s ease
+}
+
+.characterDetailsWrapper{
+    border: 2px solid #EC0202;
+    width: 500px;
+    margin: 20px auto;
+    border-radius: 20px;
+
+}
+.characterDetailsWrapper>h2{
+    color: rgb(250, 89, 25);
+}
+
+.characterDetailsWrapper>p{
+    margin: 0 20px;
+}
