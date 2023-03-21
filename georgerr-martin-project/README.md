@@ -2,6 +2,7 @@
 login için validation eklendi(locale storage dan alınan veri ile)
 formik ile form kontrolü ve yup ile validation eklendi
 private route eklendi artık olcale storage da user değeri tanımlıysa(daha önceden login yapılmışsa) direkt dashboardı açıyor. eğer önceden giriş yapılmamışsa direkt login ekranına yönlendiriyor
+<br/>
 26:
 normalde api bize sadece 10 tane veri yolluyodu. O page ve pageSize ile çözüldü
 çıkış butonu menuye geçirildi
