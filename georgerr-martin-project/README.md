@@ -1,70 +1,31 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+25:
+login için validation eklendi(locale storage dan alınan veri ile)
+formik ile form kontrolü ve yup ile validation eklendi
+private route eklendi artık olcale storage da user değeri tanımlıysa(daha önceden login yapılmışsa) direkt dashboardı açıyor. eğer önceden giriş yapılmamışsa direkt login ekranına yönlendiriyor
+26:
+normalde api bize sadece 10 tane veri yolluyodu. O page ve pageSize ile çözüldü
+çıkış butonu menuye geçirildi
+menuye kullanıcı ismi eklendi
+characters Characters componentine yollandı
+28:
+menu de bug çözüldü(locale storage da kullanıcı olmadığı halde split yaptığından sekmeyi hiç açmıyordu. varlığı sorgulandıktan sonra yapılıyor artık)
+kullanıcı giriş yaptıktan sonra geri tuşuna basarak login ekranına gelebilir. bir kişi login ekranına gelmişse giriş yapmak için gelmiştir.
+	biz çıkış butonu ile localeStorage dan giriş yapmış olan kullanıcının bilgilerini kaldırıyoruz ama geri tuşu ile login ekranına gelince localestorage da hala bir kullanıcı bilgisi yer almaktadır.
+	bunu silmek için login ekranı ilk kez render edildiğinde bu işlemi yapıyoruz.
+	bu durumda çıkış tuşuna basınca hem Menu cpmponentindeki cikisButtonHandle medodunda hem de Login ekranı ilk kez render edildiğinde bir silme işlemi gerçekleşmiş oluyor bunun için de Menu componentinde bu işlemi yapmıyoruz.
+Characters de kullanıcı isimleri axios.all ile alındı. ve CharacterDetails a Link açılıp url ve name gitti
+Characters e kullanıcı BooksDetails dan da gidebiliyor Characters butonu ile de gidebiliyor. Characters butonu ile gittiğinde BooksDetails dan geldiği gibi karakterler gelmiyor. Bunun için Charactersilk render eildiğinde
+	BooksDetails dan veri gelip gelmediğ kontrol ediliyor ve buna göre fetch işlemi BooksDetails den gelen karakter url dizisi ile ya da apinin verdiği characters apisiyle yapılıyor
+Sayfalara Yükleniyor kısmı eklendi
+PrivateRoute ile localeStorage dan kullanıcının daha önceden giriş yapıp yapmadığına bakarak; eğer yapmamışsa login sayfasına yönlendiriyoruz. normalde index sayfa olarak George componenti olduğu için Bu sayfayı PrivateRoute 
+	içine almıştım ama kullanıcı Books sayfasındayken çıkış yaptıktan sonra gerş tuşuna basınca Books sayfasına geri yönlendiriyordu. çünkü sadece George saysafında kullanıcının daha öne giriş yapıp yapmadığı kontrol ediliyordu. 
+	Bu kontrolün diğer sayfalarıda  kapsaması için Dashboar layoutunu Privateroute içerisine aldık.
+05.03:
+kullanıcı BookkDetails dan geldiğinde bir karkter dizisi dönüyor. BU listedeki elemanları gösteriyor. Eğer direkt Characters butonu ile gelmişsa 
+	BookDetails dan bir dizi gelmediği için tüm karakterleri gösterecektir. AMA KULLANICI BOOKDETAİLS DAN GELDİKTEN SONRA CHARACTERS BUTONUNA BASINCA 
+	CHARACTERS ELEMANININ İÇİ BOŞALMIYOR BUNU BOŞALTMAMIZ LAZIM.
+	HALLEDİLDİ: 
+Characters butonu ile girişte pageId kontrolü eklendi. Artık önceki ve sonraki butonları ile tüm karakterlere sayfa bazında ulaşılabiliyor.
+önceki ve sonraki butonlarına pageId sayı sınırlandırması getirildi. sayfa sayısını aşmaması için
+Characters sekmesinde hangi kitabın karakterlerinin gösterildiği bilgisi eklendi. BookDetails ve Menu den state te bookName ile eklendi
+auth layoutuna css eklendi  YÜKSEKLİK AYARI YAPILACAK VH YAPINCA KÜÇÜLTÜNCE SIKINIT ÇIKYOR
