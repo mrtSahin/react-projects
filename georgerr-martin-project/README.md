@@ -1,3 +1,29 @@
+router<br/>
+useParams<br/>
+useNavigate<br/>
+useLocation<br/>
+
+layout<br/>
+
+axios<br/>
+
+https://anapioficeandfire.com/api/<br/>
+	{<br/>
+	"books": "https://anapioficeandfire.com/api/books",<br/>
+	"characters": "https://anapioficeandfire.com/api/characters",<br/>
+	"houses": "https://anapioficeandfire.com/api/houses"<br/>
+	}<br/>
+<br/>
+
+karakter bilgisi<br/>
+	name<br/>
+	gender<br/>
+	aliases - takma ad<br/>
+	titles - ünvan<br/>
+<br/>
+YAPILDI çıkış yaptıktan sonra geri tuşuna basınca dashboarda girmemeli. giriş yapılmasını istemeli<br/>
+dashboard da nerden geri geldiğini sorgulayarak if ile tekrar login ekranına yönlendirebiliriz.<br/>
+
 25:
 login için validation eklendi(locale storage dan alınan veri ile)-
 formik ile form kontrolü ve yup ile validation eklendi-
