@@ -63,6 +63,6 @@ auth layoutuna css eklendi
 ![login](https://github.com/mrtSahin/react-projects/assets/92647890/30445ee0-f6d8-4967-9b9d-3769938ba3cb)
 ![signin](https://github.com/mrtSahin/react-projects/assets/92647890/a561cdef-07c1-4c52-a28a-41c88fd5a005)
 ![books](https://github.com/mrtSahin/react-projects/assets/92647890/61c3f4df-f40e-4dde-b1c0-90aa8c36c4f2)
-![books2](https://github.com/mrtSahin/react-projects/assets/92647890/672414b6-58a8-45fa-95ff-c92bec3ed1a2)
+![books2](https://github.com/mrtSahin/react-projects/assets/92647890/36abe674-3fc2-4fcc-a8fa-fff6efa14655)
 ![karakters](https://github.com/mrtSahin/react-projects/assets/92647890/2c69312e-8b95-4594-b28a-30d1e5f3da83)
 ![karakter details](https://github.com/mrtSahin/react-projects/assets/92647890/ebb12721-0f7a-450d-b2c1-2bb879f85028)
