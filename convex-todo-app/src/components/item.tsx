@@ -24,8 +24,8 @@ export const Item = ({
       id: id as Id<'tasks'>
     })
   }
-  return (
-    <div className={styleItem}>
+  return ( //https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line
+    <div className={styleItem}> /
       <input type='checkbox' checked={isCompleted} onChange={onCompleted} />
       {text}
     </div>
