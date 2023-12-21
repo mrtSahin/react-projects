@@ -4,18 +4,21 @@ import './App.css'
 import { useMutation, useQuery } from 'convex/react'
 import { api } from '../convex/_generated/api'
 import { Item } from './components/item'
+import { useState } from 'react'
 
 function App() {
 
   const getTasks = useQuery(api.tasks.getItemList)
   console.log(getTasks)
   const addItem = useMutation(api.tasks.addItem)
-  const onCreate = () => {
+  const onCreate = (inputText) => {
     addItem({
-      text: 'yalanla yeminle',
+      text: inputText,
       isCompleted:false
     })
   }
+
+  const [inputValue ,setInputValue] = useState('')
   return (
     <>
       <div>
@@ -28,7 +31,8 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={onCreate}>
+        <input type="text" value={inputValue} onChange={e=>setInputValue(e.target.value)}/>
+        <button onClick={()=>onCreate(inputValue)}>
           count is 
         </button>
         <div>

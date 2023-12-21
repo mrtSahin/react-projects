@@ -1,8 +1,8 @@
 import { useMutation } from 'convex/react'
-import React from 'react'
 import { api } from '../../convex/_generated/api'
 import { Id } from '../../convex/_generated/dataModel'
-
+import './item.css'
+import { useState } from 'react'
 
 interface ItemProps {
   id: string,
@@ -15,19 +15,33 @@ export const Item = ({
   text,
   isCompleted
 }: ItemProps) => {
-  const styleItem = { display: 'flex' }
+
+
 
   const updateIsCompleted = useMutation(api.tasks.updateIsCompleted)
+  const deleteItem = useMutation(api.tasks.deleteItem)
 
   const onCompleted = () => {
     updateIsCompleted({
       id: id as Id<'tasks'>
     })
   }
+
+  const onRemove = () => {
+    deleteItem({
+      id: id as Id<'tasks'>
+    })
+  }
+
+
   return ( //https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line
-    <div className={styleItem}> /
-      <input type='checkbox' checked={isCompleted} onChange={onCompleted} />
-      {text}
+    <div >
+      <div className='todoListWrapper'>
+        <input type='checkbox' checked={isCompleted} onChange={onCompleted} />
+        <input style={isCompleted ? { textDecoration: 'line-through' } : { textDecoration: 'none' }} value={text}/>
+        <button onClick={onRemove}>Delete</button>
+        <button onClick={()=>{}}>Update</button>
+      </div>
     </div>
   )
 
