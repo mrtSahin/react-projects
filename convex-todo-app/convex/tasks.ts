@@ -6,8 +6,7 @@ export const getItemList = query({
   handler: async (ctx) => {
     return await ctx.db.query('tasks').collect()
   }
-}
-)
+})
 
 export const addItem = mutation({
   args:{

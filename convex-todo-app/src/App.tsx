@@ -9,9 +9,9 @@ import { useState } from 'react'
 function App() {
 
   const getTasks = useQuery(api.tasks.getItemList)
-  console.log(getTasks)
+  console.log(getTasks?.reverse())
   const addItem = useMutation(api.tasks.addItem)
-  const onCreate = (inputText) => {
+  const onCreate = (inputText: string) => {
     addItem({
       text: inputText,
       isCompleted:false
@@ -36,6 +36,7 @@ function App() {
           count is 
         </button>
         <div>
+          
           {getTasks?.map(item=><Item id={item._id} text={item.text} isCompleted={item.isCompleted}/>)}
         </div>
         <p>
