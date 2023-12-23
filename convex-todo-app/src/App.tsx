@@ -9,7 +9,7 @@ import { useState } from 'react'
 function App() {
 
   const getTasks = useQuery(api.tasks.getItemList)
-  console.log(getTasks?.reverse())
+  console.log(getTasks)
   const addItem = useMutation(api.tasks.addItem)
   const onCreate = (inputText: string) => {
     addItem({
@@ -31,9 +31,9 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <input type="text" value={inputValue} onChange={e=>setInputValue(e.target.value)}/>
+        <input type="text" value={inputValue} onChange={e=>setInputValue(e.target.value)} />
         <button onClick={()=>onCreate(inputValue)}>
-          count is 
+          Add item
         </button>
         <div>
           
