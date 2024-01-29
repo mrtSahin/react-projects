@@ -2,7 +2,6 @@ import { useMutation } from 'convex/react'
 import { api } from '../../convex/_generated/api'
 import { Id } from '../../convex/_generated/dataModel'
 import './item.css'
-import { useState } from 'react'
 
 interface ItemProps {
   id: string,
